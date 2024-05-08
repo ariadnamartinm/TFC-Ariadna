@@ -28,24 +28,24 @@ public class UsuarioController {
 
         Usuario usuario =new Usuario();
         usuario.setId(234L);
-        usuario.setNombre("Lucas");
-        usuario.setApellido("moy");
-        usuario.setEmail("lucasmoy@gmail.com");
+        usuario.setNombre("Maria");
+        usuario.setApellido("MARTIN");
+        usuario.setEmail("maria@gmail.com");
         usuario.setTelefono("876543234");
 
         Usuario usuario2 =new Usuario();
         usuario2.setId(345L);
         usuario2.setNombre("Alfonso");
-        usuario2.setApellido("moy");
-        usuario2.setEmail("lucasmoy@gmail.com");
+        usuario2.setApellido("Valiente");
+        usuario2.setEmail("alfonso@gmail.com");
         usuario2.setTelefono("876543234");
 
 
         Usuario usuario3 =new Usuario();
         usuario3.setId(11L);
         usuario3.setNombre("Ariadna");
-        usuario3.setApellido("moy");
-        usuario3.setEmail("lucasmoy@gmail.com");
+        usuario3.setApellido("Martin");
+        usuario3.setEmail("Ariadna@gmail.com");
         usuario3.setTelefono("876543234");
 
 
