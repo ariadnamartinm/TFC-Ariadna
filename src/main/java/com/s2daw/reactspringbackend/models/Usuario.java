@@ -1,10 +1,7 @@
 package com.s2daw.reactspringbackend.models;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +11,9 @@ import lombok.ToString;
 @Table (name= "usuarios")
 @ToString @EqualsAndHashCode
 public class Usuario {
+
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Getter @Setter @Column(name = "id")
     private long id;
     @Getter @Setter @Column(name = "nombre")
