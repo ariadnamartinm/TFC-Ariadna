@@ -2,6 +2,8 @@ package com.s2daw.reactspringbackend.controllers;
 
 import com.s2daw.reactspringbackend.dao.UsuarioDao;
 import com.s2daw.reactspringbackend.models.Usuario;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +39,6 @@ public class UsuarioController {
     @RequestMapping (value = "api/usuarios", method = RequestMethod.POST)
     public void registrarUsuario(@RequestBody Usuario usuario){
         usuarioDao.registrar(usuario);
-
     }
 
     @RequestMapping (value = "usuario45")
