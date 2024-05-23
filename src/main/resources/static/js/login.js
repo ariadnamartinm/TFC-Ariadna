@@ -3,27 +3,27 @@ $(document).ready(function() {
 });
 
 
-async function iniciarSesion() {
-  let datos = {};
-  datos.email = document.getElementById('txtEmail').value;
-  datos.password = document.getElementById('txtPassword').value;
+async function iniciaSesion(email, password) {
+  try {
+    const response = await fetch('api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
 
-  const request = await fetch('api/login', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(datos)
-  });
+    if (!response.ok) { // Verifica el estado de la respuesta
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Error en el inicio de sesión');
+    }
 
-  const respuesta = await request.text();
-  if (respuesta != 'FAIL') {
-    localStorage.token = respuesta;
-    localStorage.email = datos.email;
-    window.location.href = 'usuarios.html'
-  } else {
-    alert("Las credenciales son incorrectas. Por favor intente nuevamente.");
+    const token = await response.text(); // Extrae el token del cuerpo de la respuesta
+    localStorage.setItem('token', token); // Almacena el token
+    // ... (redirige a la página principal u otra acción)
+
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    alert(error.message); // Muestra un mensaje de error al usuario
   }
-
 }

@@ -1,7 +1,6 @@
 package com.s2daw.reactspringbackend.dao;
 
 import com.s2daw.reactspringbackend.models.Usuario;
-
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Repository
 @Transactional
 public class UsuarioDaoImp implements UsuarioDao {
@@ -18,7 +18,6 @@ public class UsuarioDaoImp implements UsuarioDao {
     EntityManager entityManager;
 
     @Override
-    @Transactional
     public List<Usuario> getUsuarios() {
         String query = "FROM Usuario";
         return entityManager.createQuery(query).getResultList();
@@ -27,14 +26,15 @@ public class UsuarioDaoImp implements UsuarioDao {
     @Override
     public void eliminar(Long id) {
         Usuario usuario = entityManager.find(Usuario.class, id);
-        entityManager.remove(usuario);
+        if (usuario != null) {
+            entityManager.remove(usuario);
+        }
     }
 
     @Override
     public void registrar(Usuario usuario) {
         entityManager.merge(usuario);
     }
-
 
     @Override
     public Usuario obtenerUsuarioPorCredenciales(Usuario usuario) {
@@ -55,5 +55,4 @@ public class UsuarioDaoImp implements UsuarioDao {
         }
         return null;
     }
-
 }
