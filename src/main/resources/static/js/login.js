@@ -1,11 +1,14 @@
 $(document).ready(function() {
-    // Código a ejecutar cuando el documento esté listo
+    $('#iniciaSesion').click(function(event) {
+        event.preventDefault();
+        iniciaSesion();
+    });
 });
 
 async function iniciaSesion() {
     // Obtener los valores de los campos de entrada
-    const email = document.getElementById('txtEmail').value;
-    const password = document.getElementById('txtPassword').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     console.log('Email:', email); // Imprimir el valor de email en la consola
     console.log('Password:', password);
