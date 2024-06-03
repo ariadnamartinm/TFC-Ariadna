@@ -29,6 +29,7 @@ async function iniciaSesion() {
 
         const token = await response.text();
         localStorage.setItem('token', token);
+        localStorage.setItem('email',email);
         // Aquí puedes redirigir a la página principal u otra acción si el inicio de sesión es exitoso
         window.location.href = 'usuarios.html';
 
