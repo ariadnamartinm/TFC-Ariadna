@@ -13,11 +13,7 @@ function verificarAutenticacion() {
 }
 
 function actualizarEmailDelUsuario() {
-    const email = localStorage.getItem('email');
-    const isAdmin = localStorage.getItem('admin') === 'true' ? 'Administrador' : 'Usuario';
-
-    const userInfo = document.getElementById('user-info');
-    userInfo.innerHTML = `<span>${email}</span> (${isAdmin})`; // Muestra el email y el estado de administrador
+document.getElementById('txt-email-usuario').outerHTML = localStorage.email;
 }
 
 
