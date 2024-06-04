@@ -18,7 +18,7 @@ $(document).ready(function() {
 
         try {
             // Enviar una solicitud POST a la URL de tu servicio backend
-            const response = await fetch('/api/mantenimientos', {
+            const response = await fetch('url_de_tu_servicio_backend', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -37,24 +37,6 @@
             align-items: center;
         }
     </style>
-    <script>
-        function verificarAutenticacion() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                window.location.href = 'login.html';
-            }
-        }
-        verificarAutenticacion();
-
-        function mostrarEntradaRegistro() {
-            const email = localStorage.getItem('email');
-            if (email === 'alfonso@gmail.com') {
-                document.getElementById('registrar-mantenimiento').style.display = 'block';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', mostrarEntradaRegistro);
-    </script>
-
 
 </head>
 
@@ -99,8 +81,6 @@
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
