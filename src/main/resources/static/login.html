@@ -1,0 +1,64 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Securtec</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .custom-input {
+            width: 75%;
+        }
+        .input-container {
+            display: flex;
+            justify-content: flex-start;
+        }
+        .background1 {
+            background:
+                linear-gradient(217deg, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0) 70.71%),
+                linear-gradient(100deg, rgba(156, 0, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+                linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(101, 101, 255, 0) 70.71%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body class="background1" cz-shortcut-listen="true">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-10">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="p-5">
+
+                        <h1 class="h4 text-gray-900 mb-4">Inicio de sesión</h1>
+
+                        <form class="user" id="loginForm">
+                            <div class="form-group input-container">
+                                <input type="email" class="form-control form-control-user custom-input" id="email" aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="form-group input-container">
+                                <input type="password" class="form-control form-control-user custom-input" id="password" placeholder="Contraseña">
+                            </div>
+                            <div class="d-flex r">
+                                <a href="#" class="btn btn-primary btn-user w-25" id="iniciaSesion">Aceptar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="js/sb-admin-2.min.js"></script>
+<script src="js/login.js"></script> &gt;
+
+
+
+</body></html>

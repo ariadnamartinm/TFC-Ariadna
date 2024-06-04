@@ -31,6 +31,14 @@
             }
         }
         verificarAutenticacion();
+
+        function mostrarEntradaRegistro() {
+            const email = localStorage.getItem('email');
+            if (email === 'alfonso@gmail.com') {
+                document.getElementById('registrar-usuario').style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', mostrarEntradaRegistro);
     </script>
 </head>
 
@@ -50,14 +58,25 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-
-
-
-        <!-- Nav Item - Tables -->
+        <!-- Nav Item - Usuarios -->
         <li class="nav-item active">
             <a class="nav-link" href="usuarios.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Usuarios</span></a>
+        </li>
+
+        <!-- Nueva entrada: Registrar Usuario -->
+        <li class="nav-item" id="registrar-usuario" style="display: none;">
+            <a class="nav-link" href="registrar.html">
+                <i class="fas fa-fw fa-user-plus"></i>
+                <span>Registrar Usuario</span></a>
+        </li>
+
+        <!-- Nueva entrada: Mantenimiento -->
+        <li class="nav-item">
+            <a class="nav-link" href="mantenimiento.html">
+                <i class="fas fa-fw fa-tools"></i>
+                <span>Mantenimiento</span></a>
         </li>
 
         <!-- Divider -->
@@ -87,8 +106,6 @@
                     </button>
                 </form>
 
-
-
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -113,11 +130,6 @@
                             </form>
                         </div>
                     </li>
-
-
-
-
-
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
@@ -146,7 +158,6 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Gestión de usuarios</h1>
-
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -179,7 +190,6 @@
 
         </div>
         <!-- End of Main Content -->
-
 
     </div>
     <!-- End of Content Wrapper -->
