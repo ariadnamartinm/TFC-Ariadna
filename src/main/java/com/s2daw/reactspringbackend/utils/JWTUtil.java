@@ -18,6 +18,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
+// Inyección de las propiedades desde el archivo de configuración
     @Value("${security.jwt.secret}")
     private String key;
 
@@ -29,6 +30,7 @@ public class JWTUtil {
 
     private final Logger log = LoggerFactory.getLogger(JWTUtil.class);
 
+    // Método para crear un token JWT
     public String create(String id, String subject) {
         try {
             SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -59,6 +61,7 @@ public class JWTUtil {
         }
     }
 
+    // Método para obtener el valor del sujeto del token JWT
     public String getValue(String jwt) {
         try {
             log.info("Parsing JWT: " + jwt);
@@ -73,6 +76,7 @@ public class JWTUtil {
         }
     }
 
+    // Método para obtener el valor del ID del token JWT
     public String getKey(String jwt) {
         try {
             log.info("Parsing JWT: " + jwt);
@@ -86,4 +90,3 @@ public class JWTUtil {
             throw new RuntimeException("Error parsing JWT token", e);
         }
     }
-}

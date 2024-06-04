@@ -20,13 +20,19 @@ public class AuthController {
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody Usuario usuario) {
         try {
+            // Obtenemos el usuario mediante las credenciales proporcionadas
             Usuario usuarioLogueado = usuarioDao.obtenerUsuarioPorCredenciales(usuario);
+            // Comprobamos si el usuario obtenido no es nulo
             if (usuarioLogueado != null) {
+                // Creamos un token JWT con el id del usuario y su email
                 String tokenJwt = jwtUtil.create(String.valueOf(usuarioLogueado.getId()), usuarioLogueado.getEmail());
+                // Retornamos un ResponseEntity con el token JWT
                 return ResponseEntity.ok(tokenJwt);
             }
+            // Si el usuario es nulo, se retornará un ResponseEntity con un mensaje de credenciales incorrectas y estado UNAUTHORIZED (401)
             return new ResponseEntity<>("Credenciales incorrectas", HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
+            // En caso de error, se imprimirá el stack trace y se retornará un ResponseEntity con un mensaje de error en el servidor y estado INTERNAL_SERVER_ERROR (500)
             e.printStackTrace();
             return new ResponseEntity<>("Error en el servidor", HttpStatus.INTERNAL_SERVER_ERROR);
         }

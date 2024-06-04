@@ -22,6 +22,7 @@ public class UsuarioController {
     @Autowired
     private JWTUtil jwtUtil;
 
+    // Método GET para obtener la lista de usuarios
     @GetMapping("/usuarios")
     public ResponseEntity<List<Usuario>> getUsuarios(@RequestHeader(value = "Authorization") String token) {
         if (!validarToken(token)) {
@@ -32,20 +33,7 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }
 
-    private boolean validarToken(String token) {
-        if (token == null || !token.startsWith("Bearer ")) {
-            return false;
-        }
-
-        try {
-            String jwt = token.replace("Bearer ", "").trim();
-            String usuarioId = jwtUtil.getKey(jwt);
-            return usuarioId != null;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
+    // Método POST para registrar un nuevo usuario
     @PostMapping("/usuarios")
     public ResponseEntity<Void> registrarUsuario(@RequestBody Usuario usuario) {
         try {
@@ -60,6 +48,7 @@ public class UsuarioController {
         }
     }
 
+    // Método DELETE para eliminar un usuario
     @DeleteMapping("/usuarios/{id}")
     public ResponseEntity<Void> eliminar(@RequestHeader(value = "Authorization") String token, @PathVariable Long id) {
         if (!validarToken(token)) {
@@ -74,6 +63,22 @@ public class UsuarioController {
         }
     }
 
+    // Método para validar el token JWT
+    private boolean validarToken(String token) {
+        if (token == null || !token.startsWith("Bearer ")) {
+            return false;
+        }
+
+        try {
+            String jwt = token.replace("Bearer ", "").trim();
+            String usuarioId = jwtUtil.getKey(jwt);
+            return usuarioId != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    // Manejador de excepciones para errores en tiempo de ejecución
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
