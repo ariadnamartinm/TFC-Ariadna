@@ -16,7 +16,7 @@ $(document).ready(function() {
 
         // Crear un objeto con los datos
         const datos = {
-            numero_oficina: numeroOficina,
+            numeroOficina: numeroOficina,
             kilometros: kilometros,
             desplazamientos: desplazamientos,
             fecha: fecha
