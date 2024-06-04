@@ -19,7 +19,7 @@ public class Mantenimiento {
     private Long id;
 
     @Getter @Setter @Column(name = "numero_oficina")
-    private Integer numeroOficina;
+    private String numeroOficina;
 
     @Getter @Setter @Column(name = "kilometros")
     private Double kilometros;
@@ -35,7 +35,7 @@ public class Mantenimiento {
     }
 
     // Constructor con parámetros
-    public Mantenimiento(Integer numeroOficina, Double kilometros, Integer desplazamientos, Date fecha) {
+    public Mantenimiento(String numeroOficina, Double kilometros, Integer desplazamientos, Date fecha) {
         this.numeroOficina = numeroOficina;
         this.kilometros = kilometros;
         this.desplazamientos = desplazamientos;

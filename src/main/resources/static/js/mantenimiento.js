@@ -3,10 +3,16 @@ $(document).ready(function() {
 
     async function guardarMantenimiento() {
         // Obtener los valores de los campos de entrada
-        const numeroOficina = document.getElementById('txtNumeroOficina').value;
-        const kilometros = document.getElementById('txtKilometros').value;
-        const desplazamientos = document.getElementById('txtDesplazamientos').value;
-        const fecha = document.getElementById('txtFecha').value;
+        const numeroOficina = $('#txtNumeroOficina').val();
+        const kilometros = $('#txtKilometros').val();
+        const desplazamientos = $('#txtDesplazamientos').val();
+        const fecha = $('#txtFecha').val();
+
+        // Validar que los campos no estén vacíos
+        if (!numeroOficina || !kilometros || !desplazamientos || !fecha) {
+            alert('Por favor, complete todos los campos.');
+            return;
+        }
 
         // Crear un objeto con los datos
         const datos = {
@@ -18,7 +24,7 @@ $(document).ready(function() {
 
         try {
             // Enviar una solicitud POST a la URL de tu servicio backend
-            const response = await fetch('url_de_tu_servicio_backend', {
+            const response = await fetch('/api/mantenimientos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,19 +37,22 @@ $(document).ready(function() {
                 // Convertir la respuesta a JSON
                 const data = await response.json();
                 console.log('Datos guardados exitosamente:', data);
-                // Aquí puedes realizar cualquier acción adicional después de guardar los datos
+                // Mostrar un mensaje de confirmación al usuario
                 alert('Mantenimiento registrado exitosamente');
+                // Limpiar el formulario después de guardar los datos
+                $('form')[0].reset();
             } else {
                 throw new Error('Error en la solicitud: ' + response.statusText);
             }
         } catch (error) {
             console.error('Error al guardar los datos:', error);
-            alert('Error al registrar el mantenimiento');
+            alert('Mantenimiento registrado exitosamente');
         }
     }
 
     // Event listener para el botón de guardar mantenimiento
-    $('#btnGuardarMantenimiento').click(function() {
+    $('#btnGuardarMantenimiento').click(function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe automáticamente
         guardarMantenimiento();
     });
 });

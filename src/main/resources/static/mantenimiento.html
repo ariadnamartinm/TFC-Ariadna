@@ -38,6 +38,16 @@
         }
     </style>
 
+    <script>
+        function verificarAutenticacion() {
+          const token = localStorage.getItem('token');
+          if (!token) {
+              window.location.href = 'login.html';
+          }
+      }
+      verificarAutenticacion();
+    </script>
+
 </head>
 
 <body class="background1">
