@@ -18,7 +18,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-// Inyección de las propiedades desde el archivo de configuración
+    // Inyección de las propiedades desde el archivo de configuración
     @Value("${security.jwt.secret}")
     private String key;
 
@@ -90,3 +90,4 @@ public class JWTUtil {
             throw new RuntimeException("Error parsing JWT token", e);
         }
     }
+}
